@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Matching Game4</title>
+      <style>
+        div{
+          position:absolute;
+          width: 500px;
+          height: 500px;
+        }
+        img{
+          position: absolute;
+        }
+        #rightSide{
+          left:500px;
+          border-left: 1px solid black;
+        }
+      </style>
+      <script>
+        var numberOfFaces=5;
+        function generateFaces() {
+
+          var theLeftSide=document.getElementById("leftSide");
+          var theRightSide=document.getElementById("rightSide");
+          var theBody=document.getElementById("the_body");
+
+          for(i=1;i<=numberOfFaces;i++){
+          var smile=document.createElement("img");
+          smile.src="http://home.cse.ust.hk/~rossiter/mooc/matching_game/smile.png";
+
+          var random_top=Math.random()*401;
+          random_top=Math.floor(random_top);
+
+          var random_left=Math.random()*401;
+          random_left=Math.floor(random_left);
+
+          smile.style.top=random_top+"px";
+          smile.style.left=random_left+"px";
+          theLeftSide.appendChild(smile);
+          }
+          var leftSideImages=theLeftSide.cloneNode(true);
+          leftSideImages.removeChild(leftSideImages.lastChild);
+          theRightSide.appendChild(leftSideImages);
+
+          theLeftSide.lastChild.onclick=function nextLevel(event){
+            event.stopPropagation();
+
+            while(theLeftSide.firstChild){
+              theLeftSide.removeChild(theLeftSide.firstChild);
+            }
+
+            while(theRightSide.firstChild){
+              theRightSide.removeChild(theRightSide.firstChild);
+            }
+
+            numberOfFaces+=5;
+            generateFaces();
+          }
+
+          theBody.onclick=function gameOver(){
+            alert("Well Played till now. But sadly the game is over!");
+            theBody.onclick=null;
+            theLeftSide.lastChild.onclick=null;
+          }
+        }
+      </script>
+  </head>
+  <body id="the_body" onload="generateFaces();">
+    <h1>Matching Game</h1>
+    <p>Click on the extra smiling face on the left</p>
+    <div id="leftSide"></div>
+    <div id="rightSide"></div>
+  </body>
+</html>

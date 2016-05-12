@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      <title>part2</title>
+      <style>
+          fieldset{
+                    background: lightyellow;
+                    border:10px solid yellow;
+                    margin-bottom: 10px;
+                    width: 720px;
+                  }
+
+          label{
+                    width: 180px;
+                    display: inline-block;
+                    text-align: right;
+                    text-align: top;
+                }
+
+          .buttons{
+                      width: auto;
+                  }
+
+          .ranges{
+                    text-align: center;
+
+                }
+
+
+          textarea{
+                      width: 360px;
+                      height:50px;
+                  }
+
+          #radiobutton{
+                      width: auto;
+          }
+
+      </style>
+  </head>
+  <body>
+      <h1>Please Enter Your Details For Our Dating Website!</h1>
+      <form method="post" enctype="multipart/form-data"  action="https://ihome.ust.hk/~rossiter/cgi-bin/show_everything.php">
+          <fieldset>
+              <legend>Your face</legend>
+              <label for="avatar">Your image:</label>
+              <input type="file" id="avatar" name="avatar" required><br><br>
+              <label for="imagepreview">Image preview:<img id="preview"></label>
+          </fieldset><br>
+          <fieldset>
+              <legend>Your general details</legend>
+              <label for="fullname">Name:</label>
+              <input type="text" name="fullname" placeholder="Your full name" required><br><br>
+              <label for="sex" >Gender:</label>
+              <input id="radiobutton" type="radio" name="sex" value="male" class="buttons" required>Male <input type="radio" name="sex" value="female">Female<br><br>
+              <label for="age">Age:</label>
+              <input type="number" name="age" min="0" max="99" step="1" value="18" required><br><br>
+              <label for="dob">Date of birth:</label>
+              <input type="date" name="dob"><br><br>
+              <label for="colour">Favorite color:</label>
+              <input type="color" name="colour" value="black"><br><br>
+              <label for="country">Which country:</label>
+              <select name="country">
+                  <option value="ind">india</option>
+                  <option value="sa">south africa</option>
+                  <option value="uk">united kingdom</option>
+                  <option value="rus">russia</option>
+                  <option value="pak">pakistan</option>
+                </select>
+          </fieldset><br>
+          <fieldset>
+              <legend>Your indicators</legend>
+              <label for="height" >Height:</label>
+              Short<input type="range" class="ranges" min="0" max="100" step="5" value="50" name="height">Tall<br><br>
+              <label for="salary">Salary:</label>
+              Poor<input type="range" class="ranges" min="0" max="100" step="5" value="50" name="salary">Rich<br>
+          </fieldset><br>
+          <fieldset>
+              <legend>Your Contact Information</legend>
+              <label for="mail">Email:</label>
+              <input type="email" name="mail" required><br><br>
+              <label for"phone">Mobile:</label>
+              <input type="tel" name="phone"><br><br>
+              <label for="address">Address:</label>
+              <textarea rows="3" cols="30" name="address">
+              </textarea><br><br>
+              <label for="contact" class="buttons">Method to contact you:</label>
+              <input type="checkbox" name="contact" value="email">Email
+              <input type="checkbox" name="contact" value="whatsapp">Whatsapp
+              <input type="checkbox" name="contact" value="inappchat">In-app chat
+
+          </fieldset>
+          <br>
+          <input type="submit" value="submit">
+      </form>
+  </body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Javascript Guessing Game</title>
+	</head>
+
+	<body onload="do_game()" id="myBody">
+		<script>
+			var target_index;
+			var colors=["azure","chocolate","crimson","green","lime","navy","orchid","red","turquoise","yellow"];
+			var target;
+			var guess_input;
+			var finished=false;
+			var count=0;
+
+			function do_game(){
+				var random_number=Math.random()*10;
+				target_index=Math.floor(random_number);
+				target=colors[target_index];
+				alert("Target color is "+ target);
+
+				while(!finished){
+					guess_input=prompt("I am thinking of one of these colors:\n\n "+colors.join()+"\n\n"+"What color am I thinking of?");
+					guess_input=guess_input.toLowerCase();
+					count++;
+					finished=check_guess();
+				}
+			}
+
+			function check_guess(){
+
+				if(colors.indexOf(guess_input)==-1){
+					alert("I don't recognize that color!");
+					return false;
+				}
+
+				if(guess_input>target){
+					alert("Your input is alphabetically higher than mine!");
+					return false;
+				}
+
+				if(guess_input<target){
+					alert("Your input is alphabetically lower than mine!");
+					return false;
+				}
+
+				if(guess_input==target){
+					myBody.style.background=target;
+					alert("Your are right! You took "+count+" guesses");
+					return true;
+				}
+			}
+
+
+		</script>
+	</body>
+</html>
